@@ -20,6 +20,10 @@ class ExampleFragment : Fragment(R.layout.fragment_example) {
 
         val listener = object : ButtonClickListener {
 
+            override fun removeRoom(position: Int) {
+                viewModel.removeRoom(position)
+            }
+
             override fun addParent(position: Int) {
                 viewModel.addParent(position)
             }

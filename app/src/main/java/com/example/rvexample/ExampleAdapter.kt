@@ -29,6 +29,10 @@ class ExampleAdapter(private val listener: ButtonClickListener) :
 
         val holder = ExampleViewHolder(binding)
 
+        binding.closeButton.setOnClickListener {
+            listener.removeRoom(holder.adapterPosition)
+        }
+
         binding.addChildButton.setOnClickListener {
             listener.addChild(holder.adapterPosition)
         }

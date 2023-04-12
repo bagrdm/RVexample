@@ -21,6 +21,29 @@ class FragmentViewModel : ViewModel() {
         _data.value = newList
     }
 
+    fun removeRoom(position: Int) {
+        val newList = _data.value?.toMutableList() ?: mutableListOf()
+
+        newList.removeAt(position)
+
+        if (newList.isNotEmpty()) {
+            newList.forEachIndexed { index, roomModel ->
+                newList[index] = roomModel.copy(roomId = index)
+            }
+        }
+
+        _data.value = newList
+    }
+
+//    private fun updateData() {
+//        val newList = _data.value?.toMutableList() ?: mutableListOf()
+//        if (newList.isNotEmpty()) {
+//            newList.forEachIndexed { index, roomModel ->
+//                newList[index] = roomModel.copy(roomId = index)
+//            }
+//        }
+//    }
+
     fun addParent(position: Int) {
         val newList = _data.value?.toMutableList() ?: mutableListOf()
         val item = newList[position]
